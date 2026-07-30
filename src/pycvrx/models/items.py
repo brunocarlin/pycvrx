@@ -6,15 +6,19 @@ from typing import Any
 
 @dataclass(slots=True)
 class ResumeItem:
-    """Base item used by resume sections."""
+    """Base item used by Reactive Resume sections."""
 
     id: str = ""
     hidden: bool = False
+    icon: str = ""
+    icon_color: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.id,
             "hidden": self.hidden,
+            "icon": self.icon,
+            "iconColor": self.icon_color,
         }
 
 
@@ -119,11 +123,10 @@ class ProjectItem(ResumeItem):
 class SkillItem(ResumeItem):
     """Skill item."""
 
-    icon: str = ""
-    icon_color: str = ""
     name: str = ""
     proficiency: str = ""
     level: float = 0
+
     keywords: list[str] = field(
         default_factory=list,
     )
@@ -131,8 +134,6 @@ class SkillItem(ResumeItem):
     def to_dict(self) -> dict[str, Any]:
         return {
             **super().to_dict(),
-            "icon": self.icon,
-            "iconColor": self.icon_color,
             "name": self.name,
             "proficiency": self.proficiency,
             "level": self.level,
@@ -161,6 +162,7 @@ class ProfileItem(ResumeItem):
 
     network: str = ""
     username: str = ""
+
     website: dict[str, Any] = field(
         default_factory=lambda: {
             "url": "",

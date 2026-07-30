@@ -22,10 +22,7 @@ from pycvrx.validation import validate_resume
 def build_resume() -> Resume:
     resume = Resume(
         name="Bruno Testaguzza Carlin",
-        slug=(
-            "bruno-testaguzza-carlin-"
-            f"{datetime.now():%Y%m%d%H%M%S}"
-        ),
+        slug=(f"bruno-testaguzza-carlin-{datetime.now():%Y%m%d%H%M%S}"),
     )
 
     # =====================
@@ -35,15 +32,12 @@ def build_resume() -> Resume:
     resume.basics.name = "Bruno Testaguzza Carlin"
 
     resume.basics.headline = (
-        "Cientista de Dados | Machine Learning | "
-        "Modelagem Financeira"
+        "Cientista de Dados | Machine Learning | Modelagem Financeira"
     )
 
     resume.basics.email = "bruno@example.com"
     resume.basics.phone = "+55 11 99999-9999"
-    resume.basics.url = (
-        "https://github.com/brunocarlin"
-    )
+    resume.basics.url = "https://github.com/brunocarlin"
 
     resume.basics.location.city = "São Paulo"
     resume.basics.location.region = "SP"
@@ -54,10 +48,7 @@ def build_resume() -> Resume:
             network="LinkedIn",
             username="brunocarlin",
             website={
-                "url": (
-                    "https://linkedin.com/"
-                    "in/brunocarlin"
-                ),
+                "url": ("https://linkedin.com/in/brunocarlin"),
                 "label": "LinkedIn",
                 "inlineLink": False,
             },
@@ -106,10 +97,7 @@ def build_resume() -> Resume:
             grade="",
             location="Brasil",
             period="2024 - 2025",
-            description=(
-                "Especialização em ciência de dados "
-                "e tomada de decisão."
-            ),
+            description=("Especialização em ciência de dados e tomada de decisão."),
         ).to_dict()
     )
 
@@ -119,10 +107,7 @@ def build_resume() -> Resume:
 
     resume.sections["projects"].items.append(
         ProjectItem(
-            name=(
-                "Modelos de Machine Learning "
-                "para Crédito"
-            ),
+            name=("Modelos de Machine Learning para Crédito"),
             location="Brasil",
             period="2024 - 2025",
             description=(
@@ -131,10 +116,7 @@ def build_resume() -> Resume:
                 "avaliação de risco."
             ),
             website={
-                "url": (
-                    "https://github.com/"
-                    "brunocarlin"
-                ),
+                "url": ("https://github.com/brunocarlin"),
                 "label": "GitHub",
                 "inlineLink": False,
             },

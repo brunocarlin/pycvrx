@@ -118,17 +118,13 @@ for resume in resumes:
 ## Getting a Resume
 
 ```python
-resume = client.resumes.get(
-    "resume-id"
-)
+resume = client.resumes.get("resume-id")
 ```
 
 ## Deleting a Resume
 
 ```python
-client.resumes.delete(
-    "resume-id"
-)
+client.resumes.delete("resume-id")
 ```
 
 ## Models

@@ -1,6 +1,8 @@
 """Python SDK for Reactive Resume API."""
 
-__version__ = "0.1.1"
+from importlib.metadata import version
+
+__version__ = version
 
 from pycvrx.client import Client
 from pycvrx.config import Config

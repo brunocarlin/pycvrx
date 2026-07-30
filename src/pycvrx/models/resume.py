@@ -163,8 +163,7 @@ class Resume:
             "basics": self.basics.to_dict(),
             "summary": self.summary,
             "sections": {
-                name: section.to_dict()
-                for name, section in self.sections.items()
+                name: section.to_dict() for name, section in self.sections.items()
             },
             "customSections": self.custom_sections,
             "metadata": self.metadata.to_dict(),
