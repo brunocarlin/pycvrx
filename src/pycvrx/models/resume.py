@@ -81,15 +81,90 @@ class Resume:
         }
     )
 
+    def generate_layout(self) -> None:
+        """
+        Automatically generate Reactive Resume layout.
+
+        Places populated sections into main content
+        and sidebar based on resume importance.
+        """
+
+        main_order = [
+            "summary",
+            "experience",
+            "projects",
+            "publications",
+            "volunteer",
+            "awards",
+        ]
+
+        sidebar_order = [
+            "profiles",
+            "skills",
+            "education",
+            "languages",
+            "certifications",
+            "interests",
+            "references",
+        ]
+
+        main: list[str] = []
+        sidebar: list[str] = []
+
+        summary_content = self.summary.get(
+            "content",
+            "",
+        )
+
+        if summary_content:
+            main.append("summary")
+
+        for section_name in main_order:
+            if section_name != "summary":
+                if self._has_content(section_name):
+                    main.append(section_name)
+
+        for section_name in sidebar_order:
+            if self._has_content(section_name):
+                sidebar.append(section_name)
+
+        self.metadata.layout["pages"] = [
+            {
+                "fullWidth": False,
+                "main": main,
+                "sidebar": sidebar,
+            }
+        ]
+
+    def _has_content(
+        self,
+        section_name: str,
+    ) -> bool:
+        """
+        Check whether a section contains items.
+        """
+
+        section = self.sections.get(
+            section_name,
+        )
+
+        if section is None:
+            return False
+
+        return len(section.items) > 0
+
     def to_dict(self) -> dict[str, Any]:
         """Convert resume data to Reactive Resume format."""
+
+        self.generate_layout()
 
         return {
             "picture": self.picture,
             "basics": self.basics.to_dict(),
             "summary": self.summary,
             "sections": {
-                name: section.to_dict() for name, section in self.sections.items()
+                name: section.to_dict()
+                for name, section in self.sections.items()
             },
             "customSections": self.custom_sections,
             "metadata": self.metadata.to_dict(),

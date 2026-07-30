@@ -10,7 +10,7 @@ class Metadata:
 
     layout: dict[str, Any] = field(
         default_factory=lambda: {
-            "sidebarWidth": 35,
+            "sidebarWidth": 32,
             "pages": [
                 {
                     "fullWidth": False,
@@ -28,7 +28,7 @@ class Metadata:
             "marginX": 14,
             "marginY": 12,
             "format": "a4",
-            "locale": "en-US",
+            "locale": "pt-BR",
             "hideLinkUnderline": False,
             "hideIcons": False,
             "hideSectionIcons": True,
@@ -39,12 +39,13 @@ class Metadata:
         default_factory=lambda: {
             "level": {
                 "icon": "",
-                "type": "progress-bar",
+                "type": "hidden",
             },
             "colors": {
-                "primary": "",
-                "text": "",
-                "background": "",
+                # LinkedIn inspired palette
+                "primary": "#0A66C2",
+                "text": "#1F2937",
+                "background": "#FFFFFF",
             },
         }
     )
@@ -53,9 +54,21 @@ class Metadata:
         default_factory=lambda: {
             "body": {
                 "fontFamily": "Inter",
+                "fontWeights": [
+                    "400",
+                    "500",
+                ],
+                "fontSize": 11,
+                "lineHeight": 1.5,
             },
             "heading": {
                 "fontFamily": "Inter",
+                "fontWeights": [
+                    "600",
+                    "700",
+                ],
+                "fontSize": 13,
+                "lineHeight": 1.3,
             },
         }
     )
